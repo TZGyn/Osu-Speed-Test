@@ -51,6 +51,10 @@ input {
 	border-radius: 10px;
 	display: block;
 }
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
 </style>
 
 <script setup lang="ts">
