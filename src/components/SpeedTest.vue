@@ -112,7 +112,7 @@ const reset = () => {
 	clearInterval(timer);
 };
 
-const unfocus = (event) => {
+const unfocus = (event: { target: { blur: () => void } }) => {
 	reset();
 	event.target.blur();
 };
