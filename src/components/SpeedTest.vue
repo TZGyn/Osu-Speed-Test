@@ -6,7 +6,6 @@
 				placeholder="number of clicks"
 				v-model="clickNum"
 			/>
-			<p>{{ clickNum }}</p>
 			<input
 				type="text"
 				placeholder="first key"
@@ -37,12 +36,23 @@
 	height: 400px;
 	background-color: #ffffff10;
 }
+input {
+	background-color: #ffffff20;
+	border: none;
+	font-size: 1.3em;
+	padding: 10px;
+	margin: 10px auto;
+	border-radius: 10px;
+	display: block;
+}
 </style>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
 const clickNum = ref(10);
+const firstKey = ref('x');
+const secondKey = ref('z');
 const count = ref(0);
 const time = ref(0);
 const bpm = ref(0);
@@ -61,7 +71,10 @@ const reset = () => {
 };
 
 window.addEventListener('keydown', (e) => {
-	if ((e.key === 'a' || e.key === 's') && count.value < clickNum.value) {
+	if (
+		(e.key === firstKey.value || e.key === secondKey.value) &&
+		count.value < clickNum.value
+	) {
 		if (count.value === 0 && start.value === false) {
 			start.value = true;
 			end.value = false;
