@@ -5,18 +5,21 @@
 				type="number"
 				placeholder="number of clicks"
 				v-model="clickNum"
+				v-on:input="reset"
 			/>
 			<input
 				type="text"
 				placeholder="first key"
 				maxlength="1"
 				v-model="firstKey"
+				v-on:input="reset"
 			/>
 			<input
 				type="text"
 				placeholder="second key"
 				maxlength="1"
 				v-model="secondKey"
+				v-on:input="reset"
 			/>
 		</div>
 		<div class="stats">
@@ -68,6 +71,7 @@ const reset = () => {
 	bpm.value = 0;
 	start.value = false;
 	end.value = true;
+	clearInterval(timer);
 };
 
 window.addEventListener('keydown', (e) => {
