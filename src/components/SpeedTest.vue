@@ -1,38 +1,47 @@
 <template>
 	<div class="content">
 		<div class="input">
-			<input
-				type="number"
-				placeholder="number of clicks"
-				v-model="clickNum"
-				v-on:input="reset"
-				v-on:keyup.enter="unfocus($event)"
-			/>
-			<input
-				type="text"
-				placeholder="first key"
-				maxlength="1"
-				v-model="firstKey"
-				v-on:input="reset"
-				v-on:keyup.enter="unfocus($event)"
-			/>
-			<input
-				type="text"
-				placeholder="second key"
-				maxlength="1"
-				v-model="secondKey"
-				v-on:input="reset"
-				v-on:keyup.enter="unfocus($event)"
-			/>
+			<div class="container">
+				<input
+					type="number"
+					placeholder="number of clicks"
+					v-model="clickNum"
+					v-on:input="reset"
+					v-on:keyup.enter="unfocus($event)"
+				/>
+				<p>clicks</p>
+			</div>
+			<div class="container">
+				<input
+					type="text"
+					placeholder="first key"
+					maxlength="1"
+					v-model="firstKey"
+					v-on:input="reset"
+					v-on:keyup.enter="unfocus($event)"
+				/>
+				<p>first key</p>
+			</div>
+			<div class="container">
+				<input
+					type="text"
+					placeholder="second key"
+					maxlength="1"
+					v-model="secondKey"
+					v-on:input="reset"
+					v-on:keyup.enter="unfocus($event)"
+				/>
+				<p>second key</p>
+			</div>
 		</div>
 		<div class="stats">
-			<h1>{{ count }}</h1>
+			<h1 id="count">{{ count }} click(s)</h1>
 			<h1 v-if="start">
 				{{ time }} ms / {{ (time / 1000).toFixed(2) }} s
 			</h1>
 			<h1 v-if="start && end">{{ bpm.toFixed(0) }} bpm</h1>
+			<button id="resetButton" @click="reset()">Reset</button>
 		</div>
-		<button @click="reset()">Reset</button>
 	</div>
 </template>
 
@@ -50,10 +59,32 @@ input {
 	margin: 10px auto;
 	border-radius: 10px;
 	display: block;
+	width: 100px;
 }
 input[type='number'] {
 	-moz-appearance: textfield;
 	appearance: textfield;
+}
+.stats {
+	position: relative;
+}
+.container {
+	text-align: left;
+}
+.container * {
+	display: inline;
+	margin-left: 10px;
+}
+#count {
+	padding-top: 20px;
+}
+#count {
+	top: 10px;
+}
+#resetButton {
+	position: absolute;
+	transform: translateX(-50%);
+	bottom: 10px;
 }
 </style>
 
