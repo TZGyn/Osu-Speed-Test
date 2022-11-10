@@ -6,6 +6,7 @@
 				placeholder="number of clicks"
 				v-model="clickNum"
 				v-on:input="reset"
+				v-on:keyup.enter="unfocus($event)"
 			/>
 			<input
 				type="text"
@@ -13,6 +14,7 @@
 				maxlength="1"
 				v-model="firstKey"
 				v-on:input="reset"
+				v-on:keyup.enter="unfocus($event)"
 			/>
 			<input
 				type="text"
@@ -20,6 +22,7 @@
 				maxlength="1"
 				v-model="secondKey"
 				v-on:input="reset"
+				v-on:keyup.enter="unfocus($event)"
 			/>
 		</div>
 		<div class="stats">
@@ -72,6 +75,11 @@ const reset = () => {
 	start.value = false;
 	end.value = true;
 	clearInterval(timer);
+};
+
+const unfocus = (event) => {
+	reset();
+	event.target.blur();
 };
 
 window.addEventListener('keydown', (e) => {
