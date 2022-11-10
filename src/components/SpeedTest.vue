@@ -112,9 +112,10 @@ const reset = () => {
 	clearInterval(timer);
 };
 
-const unfocus = (event: { target: { blur: () => void } }) => {
+const unfocus = (event: KeyboardEvent) => {
 	reset();
-	event.target.blur();
+	const target = event.target as HTMLInputElement;
+	target.blur();
 };
 
 window.addEventListener('keydown', (e) => {
