@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SpeedTest from './components/SpeedTest.vue';
+	import SpeedTest from './components/SpeedTest.vue';
 </script>
 
 <template>
